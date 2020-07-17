@@ -1,0 +1,24 @@
+<div class="DescriptionBlock">
+  <div class="block-title">
+    <h2 class="title">{PAGE_TITLE}</h2>
+  </div>
+  <div class="htmlDataBlock">
+    {PAGE_CONTENT}
+  </div>
+
+<!-- Короткое SEO-описание -->
+{% IF PAGE_SEO_DESCRIPTION_SHORT %}
+  <div class="htmlDataBlock">
+    {PAGE_SEO_DESCRIPTION_SHORT}
+  </div>
+{% ENDIF %}
+<!-- END Короткое SEO-описание -->
+
+<!-- Полное SEO-описание -->
+{% IF PAGE_SEO_DESCRIPTION_LARGE %}
+  <div class="htmlDataBlock">
+    {PAGE_SEO_DESCRIPTION_LARGE}
+  </div>
+{% ENDIF %}
+<!-- END Полное SEO-описание --> 
+</div>

@@ -1,0 +1,105 @@
+<div class="cart_items">
+  {% IF cart_items_empty %}
+    <div class="attention">Корзина покупок пуста. Вы можете выбрать нужный товар из <a href="{CATALOG_URL}">каталога</a></div>
+  {% ELSE %}
+  <form action="{CART_URL}" method="post" class="cartForm">
+    <input type="hidden" name="fast_order" value="1" />
+    <input type="hidden" name="hash" value="{HASH}" />
+    <div class="cartTable">
+      <div class="cartList">
+        {% FOR cart_items %}
+          <div class="items" data-id="{cart_items.GOODS_MOD_ID}">
+            <div class="image"><a href="{cart_items.GOODS_URL}"><img class="goods-image-other" src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=fazenda{% ELSE %}{cart_items.GOODS_IMAGE_OTHER}{% ENDIF %}"></a></div> 
+            <div class="content">
+              <div class="name"> 
+                <a href="{cart_items.GOODS_URL}">{cart_items.GOODS_NAME}</a>
+                <!-- Если у товара есть отличительные свойства для модификации товара, допишем их к названию товара -->
+                {% IFNOT cart_items.distinctive_properties_empty %}{% FOR distinctive_properties %}<div class="properties"><span class="label">{cart_items.distinctive_properties.NAME}:</span><span>{cart_items.distinctive_properties.VALUE}</span></div>{% ENDFOR %}{% ENDIF %}
+                {% IF cart_items.GOODS_MOD_ART_NUMBER %}<div class="art"><span class="label">Артикул:</span><span>{cart_items.GOODS_MOD_ART_NUMBER}</span></div>{% ENDIF %}
+              </div>
+              <div class="cart-qty">
+                <div class="wrap-qty">
+                  <a id="qty_min" href="javascript:void(0)" class="qty-minus unselectable" title="Уменьшить"><span></span></a>
+                  <input type="number" name="form[quantity][{cart_items.GOODS_MOD_ID}]" value="{cart_items.ORDER_LINE_QUANTITY}" maxlength="4" min="1" max="{cart_items.GOODS_MOD_REST_VALUE}" title="Количество, {cart_items.GOODS_MOD_MEASURE_NAME}" class="inputText cartqty quantity" onkeypress="return keyPress(this, event);" onpaste="return false;" />
+                  <a id="qty_plus" href="javascript:void(0)" class="qty-plus unselectable" title="Увеличить"><span></span></a>
+                </div>
+              </div> 
+              <div class="cart-price">
+                <div class="price-box">
+                  <span class="ajaxtotal price">{cart_items.ORDER_LINE_PRICE_NOW | money_format}</span>
+                </div>
+              </div>
+              <div class="closetd"><a data-href="{cart_items.ORDER_LINE_DELETE_URL}" title="Удалить позицию" onclick="ajaxdelete($(this))" class="remove"><i class="icon-close"></i></a></div>
+            </div>
+          </div>
+        {% ENDFOR %}
+      </div>
+      <div class="cartFoot">
+        <div class="buttons">
+          <a href="{CATALOG_URL}" class="back" title="Вернуться к покупкам"><i class="icon-keyboard_arrow_left"></i><span>Вернуться к покупкам</span></a>
+        </div>
+        <div class="total">
+          <!-- Скидки, действующие на заказ -->
+          {% FOR cart_discount %}
+          <div class="discounttr">
+            <div class="title">{cart_discount.DISCOUNT_NAME}:</div>
+            <div class="price" data-value="{cart_discount.DISCOUNT_VALUE}">{cart_discount.DISCOUNT_VALUE}%</div>
+          </div>
+          {% ENDFOR %}
+          <div class="discounttr coupon" style="display: none;">
+            <div class="title"></div>
+            <div class="price" data-value=""></div>
+          </div>
+          <div class="TotalDelivery">
+            <span class="title">Стоимость доставки:</span>
+            <span class="price"><span class="changeprice">{CART_SUM_DELIVERY}</span> {CURRENCY_NAME}</span>
+          </div>
+          <div class="TotalSum">
+            <span class="title">Итого:</span>
+            <span class="price total-sum" data-total-sum="{CART_SUM_NOW_WITH_DISCOUNT}">{CART_SUM_NOW_WITH_DELIVERY_AND_DISCOUNT | money_format}</span>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <!-- По умолчанию оформление заказа в 1 шаг. Если Вы хотите использовать 4 шага оформления, то добавьте style="display: none;" к блоку, который нужно скрыть и удалите style="display: none;" из блока, который нужно отобразить. -->
+        <!-- Быстрое оформление заказа в 1 шаг -->
+        <div class="buttons"> <!-- Если Вы хотите использовать 4 шага оформления, то добавьте style="display: none;" Пример: <div class="buttons" style="display: none;"> -->
+          <a class="button button3" title="Очистить корзину" href="{CART_TRUNCATE_URL}" onclick="return confirm('Вы действительно хотите удалить все товары из корзины?')">Очистить <span>корзину</span></a>
+          <a class="button button2 startOrderQuick" title="Перейти к быстрому оформлению заказа">Оформить <span>заказ</span></a>
+          <a class="button button3 closeOrder" title="Отменить быстрое оформление заказа">Отменить <span>оформление</span></a>
+          <noscript>
+          <style>.startOrderQuick, .closeOrder {display: none;}</style>
+          <input class="button" type="submit" name="next_step" value="Оформить заказ" title="Перейти к оформлению заказа в 4 шага" />
+          <input class="button button2" type="submit" value="Пересчитать" title="Пересчитать"/>
+          </noscript>
+        </div>
+        <!-- Оформление заказа в 4 шага -->
+        <div class="buttons" style="display: none;"> <!-- Если Вы хотите использовать 1 шаг оформления, то удалите style="display: none;" Пример: <div class="buttons"> -->
+          <a class="button button2 col-left" title="Очистить корзину" href="{CART_TRUNCATE_URL}" onclick="return confirm('Вы действительно хотите удалить все товары из корзины?')">Очистить <span>корзину</span></a>
+          <button class="button" type="submit" name="next_step" value="Оформить заказ" title="Перейти к оформлению заказа в 4 шага">Оформить <span>заказ</span></button>
+          <noscript>
+          <input class="button button2" type="submit" value="Пересчитать" title="Пересчитать"/>
+          </noscript>
+        </div>
+      </div>
+    </div>
+  </form> 
+  
+  <div id="globalOrder">
+    <div class="title">
+      <div class="startOrder">Оформить заказ</div>
+      <div class="startOrderQuick active">Быстрый заказ</div>
+    </div>
+    <div class="content">
+      <div class="preloader"><span class="content-loading"></span></div>
+      <!-- Сюда грузится форма оформления быстрого заказа -->
+      <div id="OrderAjaxBlock"></div>
+      <div id="OrderAjaxBlockQuick"></div>
+    </div>
+  </div>
+  {% ENDIF %}
+</div>
+
+<style>
+ #ui-datepicker-div {display: none;}
+</style>
