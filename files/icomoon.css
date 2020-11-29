@@ -1,18 +1,19 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?c6563m');
-  src:  url('fonts/icomoon.eot?c6563m#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?c6563m') format('truetype'),
-    url('fonts/icomoon.woff?c6563m') format('woff'),
-    url('fonts/icomoon.svg?c6563m#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?3w2tdd');
+  src:  url('fonts/icomoon.eot?3w2tdd#iefix') format('embedded-opentype'),
+  url('fonts/icomoon.ttf?3w2tdd') format('truetype'),
+  url('fonts/icomoon.woff?3w2tdd') format('woff'),
+  url('fonts/icomoon.svg?3w2tdd#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
+  font-display: block;
 }
 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
-  speak: none;
+  speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -24,59 +25,44 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-add:before {
-  content: "\e145";
+.icon-telegram:before {
+  content: "\e92c";
 }
-.icon-chat_bubble_outline:before {
-  content: "\e0cb";
+.icon-tiktok:before {
+  content: "\e92d";
 }
-.icon-check:before {
-  content: "\e5ca";
+.icon-viber:before {
+  content: "\e92e";
 }
-.icon-date_range:before {
-  content: "\e921";
+.icon-whatsapp:before {
+  content: "\e92f";
 }
-.icon-filter_list:before {
-  content: "\e152";
+.icon-yandex:before {
+  content: "\e923";
 }
-.icon-format_align_center:before {
-  content: "\e234";
+.icon-mastercard:before {
+  content: "\e924";
 }
-.icon-format_align_justify:before {
-  content: "\e235";
+.icon-mir:before {
+  content: "\e925";
 }
-.icon-star:before {
-  content: "\e838";
+.icon-qiwi:before {
+  content: "\e926";
 }
-.icon-keyboard_arrow_down:before {
-  content: "\e313";
+.icon-sber:before {
+  content: "\e927";
 }
-.icon-keyboard_arrow_up:before {
-  content: "\e316";
+.icon-visa:before {
+  content: "\e928";
 }
-.icon-radio_button_unchecked:before {
-  content: "\e836";
+.icon-walletone:before {
+  content: "\e929";
 }
-.icon-radio_button_checked:before {
-  content: "\e837";
+.icon-webmoney:before {
+  content: "\e92a";
 }
-.icon-remove:before {
-  content: "\e15b";
-}
-.icon-visibility:before {
-  content: "\e8f4";
-}
-.icon-sort:before {
-  content: "\e164";
-}
-.icon-star_border:before {
-  content: "\e83a";
-}
-.icon-swap_vert:before {
-  content: "\e8d5";
-}
-.icon-visibility_off:before {
-  content: "\e8f5";
+.icon-yandexmoney:before {
+  content: "\e92b";
 }
 .icon-attach_file:before {
   content: "\e900";
@@ -176,4 +162,58 @@
 }
 .icon-youtube:before {
   content: "\e920";
+}
+.icon-add:before {
+  content: "\e145";
+}
+.icon-chat_bubble_outline:before {
+  content: "\e0cb";
+}
+.icon-date_range:before {
+  content: "\e921";
+}
+.icon-filter_list:before {
+  content: "\e152";
+}
+.icon-format_align_center:before {
+  content: "\e234";
+}
+.icon-format_align_justify:before {
+  content: "\e235";
+}
+.icon-star:before {
+  content: "\e838";
+}
+.icon-keyboard_arrow_down:before {
+  content: "\e313";
+}
+.icon-keyboard_arrow_up:before {
+  content: "\e316";
+}
+.icon-radio_button_unchecked:before {
+  content: "\e836";
+}
+.icon-radio_button_checked:before {
+  content: "\e837";
+}
+.icon-remove:before {
+  content: "\e15b";
+}
+.icon-visibility:before {
+  content: "\e8f4";
+}
+.icon-sort:before {
+  content: "\e164";
+}
+.icon-star_border:before {
+  content: "\e83a";
+}
+.icon-swap_vert:before {
+  content: "\e8d5";
+}
+.icon-visibility_off:before {
+  content: "\e8f5";
+}
+.icon-filter:before {
+  content: "\e922";
 }

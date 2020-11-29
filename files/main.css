@@ -665,6 +665,10 @@ a, a:hover, .button, .button:hover .remove, .navigation .prev, .navigation .next
 #footer .block .social-links a {display: block;margin-bottom: 10px;}
 #footer .block .social-links a span {font-size: 15px;line-height: 30px;vertical-align: middle;}
 #footer .block .social-links a i {display: inline-block;width: 24px;font-size: 20px;margin-right: 10px;vertical-align: middle;}
+/** Способы оплаты **/
+.payments {margin-top: 1rem;text-align: center;}
+.payments i {font-size: 1.25rem;margin: 0.5rem;display: inline-block;color: #cecece;}
+.payments i:hover {color: #6bac1e;}
 
 /*** Боковое меню Сайдбар ***/
 #sidebar {position: fixed;top: 264px;right: 0px;z-index: 999;background: #f3f3f3;border: 1px solid #cecece;color: #c6c6c6;-webkit-border-radius: 2px 0px 0px 2px;-moz-border-radius: 2px 0px 0px 2px;border-radius: 2px 0px 0px 2px;}
