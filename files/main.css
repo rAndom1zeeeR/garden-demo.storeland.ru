@@ -1615,6 +1615,8 @@ select:focus, textarea:focus, input:focus {font-size: 16px;}
 #botbar .CompareGoodsTableFilter .button span {display: none;}
 .pdt-cat .block-title .mainnav {width: 100%;float: none;margin-top: 10px;}
 .products-list .item .product-name {width: calc(100% - 50px);}
+.review-counter .rewiew-grade {width: 150px;}
+.review-counter .grade-lines {width: calc(100% - 150px);}
 }
 
 @media all and (max-width: 481px) {
@@ -1695,7 +1697,10 @@ select:focus, textarea:focus, input:focus {font-size: 16px;}
 #sales .counter div:after {content: ":";padding-left: 0px;}
 .cartTable .actions .buttons a span {display: none;}
 .promotion_campaign.products-grid .item {width: 100%;}
+.review-counter .rewiew-grade {width: 100%;}
+.review-counter .grade-lines {width: 100%;border-left: 0;padding: 15px 0 0 0;}
 }
+
 
 @media all and (max-width: 360px) {
 }
